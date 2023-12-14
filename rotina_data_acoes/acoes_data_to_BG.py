@@ -55,7 +55,7 @@ def sendEmail():
     mail = smtplib.SMTP('smtp.gmail.com', 587)
     mail.ehlo()
     mail.starttls()
-    mail.login('mikeekrll@gmail.com', 'kdftjbguqbtfdvco')
+    mail.login('mikeekrll@gmail.com', 'xkdxftjbguqbtfdvcox')
 
     for email in you:
         mail.sendmail(me, email, msg.as_string())
