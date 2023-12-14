@@ -1,0 +1,8 @@
+ERRO >> 
+ 400 Syntax error: Expected end of input but got identifier `delete from acoes-378306.acoes.data_acoes` at [1:1]
+
+Location: US
+Job ID: 47a39b57-c11a-4928-83e6-6bac3d4fa07e
+
+------------------------------
+Email send >>>

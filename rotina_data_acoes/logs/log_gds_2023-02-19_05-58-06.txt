@@ -1,0 +1,5 @@
+---Importação Iniciada: 2023-02-19 05:58:10.005929
+---Importação finalizada -> Tempo decorido: 6.65 segundos
+loaded: 601 rows and 32 columns to acoes-378306.acoes.data_acoes
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Email send >>>

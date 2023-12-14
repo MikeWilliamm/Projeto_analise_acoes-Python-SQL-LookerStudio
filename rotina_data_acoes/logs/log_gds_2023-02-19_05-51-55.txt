@@ -1,0 +1,4 @@
+ERRO >> 
+ bigquery_import() missing 2 required positional arguments: 'arq' and 'name_pasta'
+------------------------------
+Email send >>>
