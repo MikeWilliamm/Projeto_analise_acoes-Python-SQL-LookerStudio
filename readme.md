@@ -30,7 +30,7 @@ Como evidenciado no vídeo abaixo, o resultado do projeto foi altamente satisfat
   <b>DashBoard</b>
 </p>
 
-Os códigos Python, as consultas SQL estruturadas e o design de background criado no Figma estão disponíveis nos arquivos do repositório.
+Os códigos Python, as consultas SQL estruturadas de maior complexidade apenas, e o design de background criado no Figma estão disponíveis nos arquivos do repositório.
 
 ## Conclusão
 Por meio da integração de diversas tecnologias e conceitos técnicos, este projeto ilustra parte da minha expertise na aplicação eficaz da inteligência de dados, com engenharia, análise e visualização de dados. Sinto-me confiante em ter obtido um desempenho satisfatório, cumprindo com sucesso o propósito inicialmente estabelecido. Almejo que este trabalho contribua para disseminar conhecimento, mas também inspire a entrada de novos investidores na bolsa de valores.
