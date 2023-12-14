@@ -20,11 +20,10 @@ Figma - Plataforma de design utilizada no fundo da visualização de dados.
 ## Resultados
 Como evidenciado no vídeo abaixo, o resultado do projeto foi altamente satisfatório. De maneira rápida e objetiva, tornou-se possível analisar diversas ações simultaneamente em uma plataforma de Business Intelligence (BI), além de incorporar indicadores e métricas de mercado. Adicionalmente, foi implementado o cálculo automático das Análises de Valuation de investidores renomados e bem-sucedidos no mercado de ações, como, por exemplo, a análise de preço justo de [Benjamin Graham](https://pt.wikipedia.org/wiki/Benjamin_Graham) e o preço-teto de [Luiz Barsi Filho](https://www.infomoney.com.br/perfil/luiz-barsi/).
 
-<b>Video apresentação</b><br>
+<b>Video apresentação:</b><br>
 [![Vídeo](https://raw.githubusercontent.com/MikeWilliamm/Projeto_analise_acoes-Python-SQL-LookerStudio/main/prints/2_capa_video.png)](https://www.youtube.com/watch?v=zATKt3iag7E)
-
+<br>
 <b>Imagem dashboard final</b><br>
-<b>Resumo:</b>
 <p align="center">
   <img  src="prints/3_dashboard.png">
   <b>DashBoard</b>
