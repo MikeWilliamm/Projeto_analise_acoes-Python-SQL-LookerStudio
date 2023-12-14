@@ -112,7 +112,7 @@ def get_jsons_return_df(ticker):
 
 
 def executar_query_bigquery(query):
-    # Substitua 'seu-projeto' pelo ID do projeto do Google Cloud
+    # Projeto
     projeto = 'acoes-378306'
 
     # Crie uma instância do cliente BigQuery
@@ -226,118 +226,5 @@ def main():
     upload_df_bq(df_valor_atual, nome_schema, nome_tabela, table_schema, orientacion)
     print('dados metrica_atual importados')
 main()
-#%%
-# url = 'https://brapi.dev/api/available'
-# response = requests.get(url)
-# dados = json.loads(response.text)
-# tickers_com_f = dados["stocks"]
-# tickers_sem_f = list(map(lambda x: x.replace('f', '').replace('F', ''), tickers_com_f))
-# tickers_sem_duplicatas = list(set(tickers_sem_f))
-# %%
-# tickers_sem_duplicatas = ['TAEE11', 'RBIR11', 'REVE11']
-# %%
-# df_cabecalho_full = pd.DataFrame()
-# df_dados_hitory = pd.DataFrame()
-# contador = 0
-# for ticker in tickers_sem_duplicatas:
-#     contador += 1
-#     print(f'Extraindo dados: {ticker} | {contador} - {len(tickers_sem_duplicatas)} ')
-#     try:
-#         url = f'https://brapi.dev/api/quote/{ticker}?range=5y&interval=1d&fundamental=true&dividends=false'
-#         response = requests.get(url)
-#         dados = json.loads(response.text)
-#         dados_cabecalho = str(dados["results"][0]).replace("'", '"').split('"validRanges"')[0][:-2]+'}'
-#         dados_history = dados["results"][0]['historicalDataPrice']
-        
-#     except:
-#         print(f'ERRO COLETAR DADOS DA API - TICKER: {ticker}')
-#     else:
-#         dados_cabecalho = dados_cabecalho.replace('\\x81', '').replace('\\x8d', '')
-#         print(dados_cabecalho)
-#         json_cabecalho = json.loads(dados_cabecalho)
-#         df_cabecalho = pd.DataFrame([json_cabecalho])
-#         campos = ['symbol', 'shortName', 'longName', 'currency', 'regularMarketPrice',
-#             'regularMarketDayHigh', 'regularMarketDayLow', 'regularMarketDayRange',
-#             'regularMarketChange', 'regularMarketChangePercent', 'regularMarketTime',
-#             'marketCap',
-#             'regularMarketVolume', 'regularMarketPreviousClose', 'regularMarketOpen',
-#             'averageDailyVolume10Day', 'averageDailyVolume3Month', 'fiftyTwoWeekLowChange',
-#             'fiftyTwoWeekLowChangePercent',
-#             'fiftyTwoWeekRange', 'fiftyTwoWeekHighChange', 'fiftyTwoWeekHighChangePercent',
-#             'fiftyTwoWeekLow', 'fiftyTwoWeekHigh', 'twoHundredDayAverage',
-#             'twoHundredDayAverageChange', 'twoHundredDayAverageChangePercent']
-#         # Reordenar colunas e remover colunas extras
-#         df_cabecalho_filter= df_cabecalho.reindex(columns=campos)
 
-#         # Remover colunas extras (caso existam)
-#         colunas_extras = set(df_cabecalho_filter.columns) - set(campos)
-#         df_cabecalho_filter = df_cabecalho_filter.drop(columns=colunas_extras)
-#         df_cabecalho_full = pd.concat([df_cabecalho_full, df_cabecalho_filter])
-
-
-#         df_dados_history_ticker = pd.DataFrame(dados_history)
-#         df_dados_history_ticker['ticker'] = ticker
-#         df_dados_history_ticker['date'] = pd.to_datetime(df_dados_history_ticker['date'], unit='s')
-        
-#         campos = ['date', 'open', 'high', 'low', 'close', 'volume', 'adjustedClose', 'ticker']
-#         # Reordenar colunas e remover colunas extras
-#         df_history_filter = df_dados_history_ticker.reindex(columns=campos)
-
-#         # Remover colunas extras (caso existam)
-#         colunas_extras = set(df_history_filter.columns) - set(campos)
-#         df_history_filter = df_history_filter.drop(columns=colunas_extras)
-        
-#         df_dados_hitory = pd.concat([df_dados_hitory, df_history_filter])
-    
-#     #break
-# # %%
-# print('Dados históricos e de cabecalho extraidos!')
-# print('------------------------------------ Inicio importação dados cabeçalho')
-# colunas_desejadas_cabecalho = ['symbol', 'shortName', 'longName', 'currency', 'regularMarketPrice',
-#                     'regularMarketDayHigh', 'regularMarketDayLow', 'regularMarketDayRange',
-#                     'regularMarketChange', 'regularMarketChangePercent', 'regularMarketTime',
-#                     'marketCap',
-#                     'regularMarketVolume', 'regularMarketPreviousClose', 'regularMarketOpen',
-#                     'averageDailyVolume10Day', 'averageDailyVolume3Month', 'fiftyTwoWeekLowChange',
-#                     'fiftyTwoWeekLowChangePercent',
-#                     'fiftyTwoWeekRange', 'fiftyTwoWeekHighChange', 'fiftyTwoWeekHighChangePercent',
-#                     'fiftyTwoWeekLow', 'fiftyTwoWeekHigh', 'twoHundredDayAverage',
-#                     'twoHundredDayAverageChange', 'twoHundredDayAverageChangePercent']
-
-# # Reordenar colunas e remover colunas extras
-# df_cabecalho_full = df_cabecalho_full.reindex(columns=colunas_desejadas_cabecalho)
-
-# # Remover colunas extras (caso existam)
-# colunas_extras = set(df_cabecalho.columns) - set(colunas_desejadas_cabecalho)
-# df_cabecalho_full = df_cabecalho_full.drop(columns=colunas_extras)
-
-# #UPLOAD AO BIG QUERY
-# nome_schema = 'acoes'
-# nome_tabela = 'acoes_cabecalho'
-# table_schema = [
-#     {'name': 'symbol', 'type': 'STRING'}, {'name': 'shortName', 'type': 'STRING'}, {'name': 'longName', 'type': 'STRING'},
-#     {'name': 'currency', 'type': 'STRING'}, {'name': 'regularMarketPrice', 'type': 'FLOAT'}, {'name': 'regularMarketDayHigh', 'type': 'FLOAT'},
-#     {'name': 'regularMarketDayLow', 'type': 'FLOAT'}, {'name': 'regularMarketDayRange', 'type': 'STRING'}, {'name': 'regularMarketChange', 'type': 'FLOAT'},
-#     {'name': 'regularMarketChangePercent', 'type': 'FLOAT'}, {'name': 'regularMarketTime', 'type': 'STRING'}, {'name': 'marketCap', 'type': 'FLOAT'},
-#     {'name': 'regularMarketVolume', 'type': 'FLOAT'}, {'name': 'regularMarketPreviousClose', 'type': 'FLOAT'}, {'name': 'regularMarketOpen', 'type': 'FLOAT'},
-#     {'name': 'averageDailyVolume10Day', 'type': 'FLOAT'}, {'name': 'averageDailyVolume3Month', 'type': 'FLOAT'}, {'name': 'fiftyTwoWeekLowChange', 'type': 'FLOAT'},
-#     {'name': 'fiftyTwoWeekLowChangePercent', 'type': 'FLOAT'}, {'name': 'fiftyTwoWeekRange', 'type': 'STRING'}, {'name': 'fiftyTwoWeekHighChange', 'type': 'FLOAT'},
-#     {'name': 'fiftyTwoWeekHighChangePercent', 'type': 'FLOAT'}, {'name': 'fiftyTwoWeekLow', 'type': 'FLOAT'}, {'name': 'fiftyTwoWeekHigh', 'type': 'FLOAT'},
-#     {'name': 'twoHundredDayAverage', 'type': 'FLOAT'}, {'name': 'twoHundredDayAverageChange', 'type': 'FLOAT'}, {'name': 'twoHundredDayAverageChangePercent', 'type': 'FLOAT'},
-# ]																																																																																																		
-# orientacion = 'replace'
-# upload_df_bq(df_cabecalho_full, nome_schema, nome_tabela, table_schema, orientacion)
-# print('dados cabecalho importados')
-
-# #----------------------------------------------------------------------------------------------------------------
-# nome_schema = 'acoes'
-# nome_tabela = 'acoes_history'
-# table_schema = [
-#     {'name': 'date', 'type': 'DATETIME'}, {'name': 'open', 'type': 'FLOAT'}, {'name': 'high', 'type': 'FLOAT'},
-#     {'name': 'low', 'type': 'FLOAT'}, {'name': 'close', 'type': 'FLOAT'}, {'name': 'volume', 'type': 'FLOAT'},
-#     {'name': 'adjustedClose', 'type': 'FLOAT'}, {'name': 'ticker', 'type': 'STRING'}
-#     ]
-# orientacion = 'replace'
-# upload_df_bq(df_dados_hitory, nome_schema, nome_tabela, table_schema, orientacion)
-# print('dados history importados')
 
