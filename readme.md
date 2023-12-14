@@ -23,7 +23,7 @@ Como evidenciado no vídeo abaixo, o resultado do projeto foi altamente satisfat
 <b>Video apresentação:</b><br>
 [![Vídeo](https://raw.githubusercontent.com/MikeWilliamm/Projeto_analise_acoes-Python-SQL-LookerStudio/main/prints/2_capa_video.png)](https://www.youtube.com/watch?v=zATKt3iag7E)
 <br>
-<b>Imagem dashboard final</b><br>
+<b><br>Imagem dashboard final:</b><br>
 <p align="center">
   <img  src="prints/3_dashboard.png">
   <b>DashBoard</b>
